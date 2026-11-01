@@ -168,22 +168,18 @@ class App(customtkinter.CTk):
         customtkinter.set_widget_scaling(new_scaling_float)
 
     def zoom_in_event(self, event=None) -> None:
-        current_value = self.scaling_optionemenu.get()
-        if current_value in self.scaling_values:
-            current_index = self.scaling_values.index(current_value)
-            if current_index < len(self.scaling_values) - 1:
-                new_value = self.scaling_values[current_index + 1]
-                self.scaling_optionemenu.set(new_value)
-                self.change_scaling_event(new_value)
+        current_index = self.scaling_optionemenu.index()
+        if current_index < len(self.scaling_values) - 1:
+            new_value = self.scaling_values[current_index + 1]
+            self.scaling_optionemenu.set(new_value)
+            self.change_scaling_event(new_value)
 
     def zoom_out_event(self, event=None) -> None:
-        current_value = self.scaling_optionemenu.get()
-        if current_value in self.scaling_values:
-            current_index = self.scaling_values.index(current_value)
-            if current_index > 0:
-                new_value = self.scaling_values[current_index - 1]
-                self.scaling_optionemenu.set(new_value)
-                self.change_scaling_event(new_value)
+        current_index = self.scaling_optionemenu.index()
+        if current_index > 0:
+            new_value = self.scaling_values[current_index - 1]
+            self.scaling_optionemenu.set(new_value)
+            self.change_scaling_event(new_value)
 
     def zoom_reset_event(self, event=None) -> None:
         self.scaling_optionemenu.set("100%")
